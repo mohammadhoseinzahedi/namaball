@@ -42,7 +42,6 @@ const Standings = async ({ code }: { code: string }) => {
       {standings.map((standing: Standing) => (
         <StandingTable
           key={standing.group}
-          className="text-sm md:text-lg mb-4"
           standing={standing}
           competition={competition}
         ></StandingTable>

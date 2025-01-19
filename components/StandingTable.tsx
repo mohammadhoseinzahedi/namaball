@@ -18,7 +18,6 @@ type StandingTableProps = {
 function StandingTable({
   standing,
   competition,
-  className,
 }: StandingTableProps) {
   const tableHeaderRow = [
     { title: "#", className: "p-1 md:p-2" },
