@@ -2,7 +2,7 @@ This is the Football Data Demo App built with NextJS and using [football-data.or
 It shows supported competitions livescore and standings
 
 ## Getting Started
-First Make an .env file in your route directory and add following parameters:
+First, make an .env file in your route directory and add following parameters:
 
 ```env
 APP_URL=your app url for local dev its http://localhost:3000
