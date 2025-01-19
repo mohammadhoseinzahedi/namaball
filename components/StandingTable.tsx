@@ -1,5 +1,4 @@
 import { Standing, Competition } from "@/lib/types";
-import { cn } from "@/lib/utils";
 import {
   Table,
   TableBody,

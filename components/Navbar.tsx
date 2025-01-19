@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const title = "Footy Nama";
 const menuItems = [
