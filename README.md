@@ -1,11 +1,13 @@
-This is the Football Data Demo App built with NextJS V.15 and using free football-data.org api 
-Made by Mohammad Hosein Zahedi
+This is the Football Data Demo App built with NextJS and using [football-data.org](https://www.football-data.org/) API
+It shows supported competitions livescore and standings
 
 ## Getting Started
-First Make an .env file in your route directory and add following parameters
+First Make an .env file in your route directory and add following parameters:
 
+```env
 APP_URL=your app url for local dev its http://localhost:3000
-Football_DATA_API_AUTH_TOKEN=You Should get that from their website
+Football_DATA_API_AUTH_TOKEN=You Should get that from football-data.org website
+```
 
 Second, run the development server:
 
@@ -20,17 +22,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
