@@ -15,24 +15,21 @@ type StandingTableProps = {
   className?: string;
 };
 
-function StandingTable({
-  standing,
-  competition,
-}: StandingTableProps) {
+function StandingTable({ standing, competition }: StandingTableProps) {
   const tableHeaderRow = [
-    { title: "#", className: "p-1 md:p-2" },
+    { title: "#" },
     { title: "Team", className: "w-full" },
-    { title: "P", className: "p-1 md:p-2" },
-    { title: "W", className: "p-1 md:p-2" },
-    { title: "D", className: "p-1 md:p-2" },
-    { title: "L", className: "p-1 md:p-2" },
-    { title: "F", className: "p-1 md:p-2" },
-    { title: "A", className: "p-1 md:p-2" },
-    { title: "GD", className: "p-1 md:p-2" },
-    { title: "PTS", className: "p-1 md:p-2" },
+    { title: "P" },
+    { title: "W" },
+    { title: "D" },
+    { title: "L" },
+    { title: "F" },
+    { title: "A" },
+    { title: "GD" },
+    { title: "PTS" },
   ];
   return (
-    <Table>
+    <Table className="caption-top">
       <TableCaption>{standing.group ?? competition.name}</TableCaption>
       <TableHeader>
         <TableRow>
@@ -44,27 +41,27 @@ function StandingTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {standing.table.map((table) => (
-          <TableRow key={table.position}>
-            <TableCell>{table.position}</TableCell>
+        {standing.table.map((row) => (
+          <TableRow key={row.team.tla}>
+            <TableCell>{row.position}</TableCell>
             <TableCell>
               <div className="flex gap-2 pe-4 items-center">
                 <img
                   className="h-5 w-5"
-                  src={table.team.crest}
-                  alt={table.team.name}
+                  src={row.team.crest}
+                  alt={row.team.name}
                 />
-                <div className="whitespace-nowrap">{table.team.shortName}</div>
+                <div className="whitespace-nowrap">{row.team.shortName}</div>
               </div>
             </TableCell>
-            <TableCell>{table.playedGames}</TableCell>
-            <TableCell>{table.won}</TableCell>
-            <TableCell>{table.draw}</TableCell>
-            <TableCell>{table.lost}</TableCell>
-            <TableCell>{table.goalsFor}</TableCell>
-            <TableCell>{table.goalsAgainst}</TableCell>
-            <TableCell>{table.goalDifference}</TableCell>
-            <TableCell>{table.points}</TableCell>
+            <TableCell className="text-center">{row.playedGames}</TableCell>
+            <TableCell className="text-center">{row.won}</TableCell>
+            <TableCell className="text-center">{row.draw}</TableCell>
+            <TableCell className="text-center">{row.lost}</TableCell>
+            <TableCell className="text-center">{row.goalsFor}</TableCell>
+            <TableCell className="text-center">{row.goalsAgainst}</TableCell>
+            <TableCell className="text-center">{row.goalDifference}</TableCell>
+            <TableCell className="text-center">{row.points}</TableCell>
           </TableRow>
         ))}
       </TableBody>
