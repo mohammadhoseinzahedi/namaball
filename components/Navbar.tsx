@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const title = "Footy Nama";
+const title = "NamaBall";
 const menuItems = [
   { title: "Home", href: "/" },
   { title: "Matches", href: "/matches" },
