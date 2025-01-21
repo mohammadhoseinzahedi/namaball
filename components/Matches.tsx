@@ -38,9 +38,9 @@ const Match = ({ match }: { match: Match }) => {
       <div className="bg-lime-300">
         <div className="container mx-auto flex flex-wrap p-2 md:px-8 items-center">
           <Image
-            className="mr-8 w-[40px] h-[40px]"
-            width={40}
-            height={40}
+            className="mr-4 w-[30px] h-[30px]"
+            width={30}
+            height={30}
             src={match.competition.emblem}
             alt={match.competition.name}
           />
