@@ -5,6 +5,8 @@ import {
 import type { Match } from "@/lib/types";
 import { NextRequest } from "next/server";
 import { getDateQuery } from "@/lib/utils";
+import { unstable_cache } from "next/cache";
+
 
 type Data = {
   filters: {
@@ -22,16 +24,29 @@ type Data = {
   matches: Match[];
 };
 
-export async function GET(request: NextRequest) {
-  if (!FOOTBALL_DATA_API_AUTH_TOKEN) {
-    console.error(
-      "You have not set your FOOTBALL_DATA_API_AUTH_TOKEN in .env file"
-    );
-    return new Response("Internal Server Error", {
-      status: 500,
+async function getMatches(query: string) {
+  const revalidate = 120;
+  // This `key` will change every 120 seconds
+  const key = `${query}-${Math.floor(new Date().valueOf() / (1000 * revalidate)).toString()}`;
+  return unstable_cache(async () => {
+    if (!FOOTBALL_DATA_API_AUTH_TOKEN) {
+      throw new Error("You have not set your FOOTBALL_DATA_API_AUTH_TOKEN in .env file");
+    }
+    const response = await fetch(`${FOOTBALL_DATA_API_URL}/matches?${query}`, {
+      headers: { "X-Auth-Token": FOOTBALL_DATA_API_AUTH_TOKEN },
     });
-  }
   
+    if (!response.ok) {
+      throw new Error(`${response.statusText} (${response.status})`);
+    }
+  
+    const { matches } = await response.json() as Data;
+    return matches;
+  }, [key])();
+  
+}
+
+export async function GET(request: NextRequest) {  
   const searchParams = request.nextUrl.searchParams;
   const daysOffset = Number(searchParams.get("daysOffset"));
 
@@ -40,21 +55,15 @@ export async function GET(request: NextRequest) {
       status: 400,
     });
   }
-  const query = getDateQuery(daysOffset);
-
-  const response = await fetch(`${FOOTBALL_DATA_API_URL}/matches?${query}`, {
-    headers: { "X-Auth-Token": FOOTBALL_DATA_API_AUTH_TOKEN },
-    next: { revalidate: 120 },
-  });
-
-  if (!response.ok) {
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-    });
+  
+  let matches: Match[] | null = null;
+  try {
+    matches = await getMatches(getDateQuery(daysOffset));
+  } catch (error) {
+    console.error(error);
+  } finally {
+    return Response.json(matches);
   }
 
-  const data: Data = await response.json();
 
-  return Response.json(data.matches);
 }
