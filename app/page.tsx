@@ -26,7 +26,7 @@ export default function Home() {
               width={20}
               height={20}
             />
-            Github Page
+            Source Code
           </a>
         </div>
       </main>

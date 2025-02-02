@@ -1,28 +1,27 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const title = "NamaBall";
 const menuItems = [
-  { title: "Home", href: "/" },
-  { title: "Matches", href: "/matches" },
-  { title: "Competitions", href: "/competitions" },
+  { title: "Home", href: "/", className: "px-2" },
+  { title: "Competitions", href: "/competitions", className: "px-2 border-x" },
+  { title: "Matches", href: "/matches", className: "px-2" },
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
   return (
-    <nav className="text-slate-700 bg-slate-100">
-      <div className="container mx-auto flex flex-wrap justify-between px-2 md:px-4 py-4">
-        <h1 className="text-xl md:text-3xl p-2">{title}</h1>
-        <div className="flex flex-wrap items-center border rounded-2xl">
-          {menuItems.map(({ title, href }) => (
-            <Link
-              className="block italic md:text-xl px-3 py-2"
-              key={title}
-              href={href}
-            >
-              {title}
-            </Link>
-          ))}
-        </div>
+    <nav className="bg-slate-700 p-3 md:text-xl text-white">
+      <div className="container mx-auto flex flex-wrap justify-center">
+        {menuItems.map(({ title, href, className }) => (
+          <Link
+            key={title}
+            href={href}
+            className={`${className} ${pathname == href ? "text-yellow-500" : ""}`}
+          >
+            {title}
+          </Link>
+        ))}
       </div>
     </nav>
   );

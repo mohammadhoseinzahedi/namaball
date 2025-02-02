@@ -81,7 +81,7 @@ const Competitions = async () => {
     return <p className="container p-4 mx-auto">Something Went Wrong...</p>;
   }
   return (
-    <div className="container px-2 py-6 mx-auto flex flex-wrap justify-center gap-4">
+    <div className="container px-4 py-6 mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-4">
       {competitions.map((competition) => (
         <Competition key={competition.id} competition={competition} />
       ))}
