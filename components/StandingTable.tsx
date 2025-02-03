@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Standing, Competition } from "@/lib/types";
 import {
   Table,
@@ -19,14 +20,14 @@ function StandingTable({ standing, competition }: StandingTableProps) {
   const tableHeaderRow = [
     { title: "#" },
     { title: "Team", className: "w-full" },
-    { title: "P" },
-    { title: "W" },
-    { title: "D" },
-    { title: "L" },
-    { title: "F" },
-    { title: "A" },
-    { title: "GD" },
-    { title: "PTS" },
+    { title: "P", className: "text-center" },
+    { title: "W", className: "text-center" },
+    { title: "D", className: "text-center" },
+    { title: "L", className: "text-center" },
+    { title: "F", className: "text-center" },
+    { title: "A", className: "text-center" },
+    { title: "GD", className: "text-center" },
+    { title: "PTS", className: "text-center" },
   ];
   return (
     <Table className="caption-top">
@@ -42,15 +43,11 @@ function StandingTable({ standing, competition }: StandingTableProps) {
       </TableHeader>
       <TableBody>
         {standing.table.map((row) => (
-          <TableRow key={row.team.tla}>
+          <TableRow key={row.team.name}>
             <TableCell>{row.position}</TableCell>
             <TableCell>
               <div className="flex gap-2 pe-4 items-center">
-                <img
-                  className="h-5 w-5"
-                  src={row.team.crest}
-                  alt={row.team.name}
-                />
+                <Image className="h-5 w-5" src={row.team.crest} alt={row.team.name} width={20} height={20} />
                 <div className="whitespace-nowrap">{row.team.shortName}</div>
               </div>
             </TableCell>

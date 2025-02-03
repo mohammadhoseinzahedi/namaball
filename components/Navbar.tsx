@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import clsx from "clsx";
+
 
 const menuItems = [
-  { title: "Home", href: "/", className: "px-2" },
-  { title: "Competitions", href: "/competitions", className: "px-2 border-x" },
-  { title: "Matches", href: "/matches", className: "px-2" },
+  { title: "Home", href: "/" },
+  { title: "Competitions", href: "/competitions", className: "border-x" },
+  { title: "Matches", href: "/matches" },
 ];
 
 const Navbar = () => {
@@ -17,7 +19,9 @@ const Navbar = () => {
           <Link
             key={title}
             href={href}
-            className={`${className} ${pathname == href ? "text-yellow-500" : ""}`}
+            className={clsx("px-2", className, {
+              "text-yellow-500" : pathname == href,
+            })}
           >
             {title}
           </Link>
