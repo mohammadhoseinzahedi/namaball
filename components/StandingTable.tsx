@@ -48,7 +48,7 @@ function StandingTable({ standing, competition }: StandingTableProps) {
             <TableCell>
               <div className="flex gap-2 pe-4 items-center">
                 <Image className="h-5 w-5" src={row.team.crest} alt={row.team.name} width={20} height={20} />
-                <div className="whitespace-nowrap">{row.team.shortName}</div>
+                <div className="whitespace-nowrap">{row.team.name}</div>
               </div>
             </TableCell>
             <TableCell className="text-center">{row.playedGames}</TableCell>
