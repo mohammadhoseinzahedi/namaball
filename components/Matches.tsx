@@ -99,7 +99,7 @@ const Match = ({ match }: { match: Match }) => {
         </div>
 
         <div className="my-auto ml-auto">
-          {match.status === "TIMED" && <ClientTime date={match.utcDate} />}
+          {["TIMED", "SCHEDULED"].includes(match.status) && <ClientTime date={match.utcDate} />}
           {match.status === "IN_PLAY" && "In Play"}
           {match.status === "PAUSED" && "Half Time"}
           {match.status === "FINISHED" && "Finished"}
