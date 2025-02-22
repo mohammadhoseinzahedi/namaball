@@ -19,10 +19,6 @@ function getQuery(date: DateSearchParam) {
   }
 }
 async function getMatches(query: string = "") {
-  if (!API_URL) {
-    console.error("You have not set your APP_URL in .env file");
-    return;
-  }
   const response = await fetch(`${API_URL}/matches?${query}`);
   if (!response.ok) {
     console.error(`${response.statusText} (${response.status})`);
@@ -78,10 +74,10 @@ const Match = ({ match }: { match: Match }) => {
 
         <div className="flex flex-col mx-4">
           <div className="flex-1 content-center">
-            {match.homeTeam.shortName}
+            {match.homeTeam.shortName || match.homeTeam.name}
           </div>
           <div className="flex-1 content-center">
-            {match.awayTeam.shortName}
+            {match.awayTeam.shortName || match.awayTeam.name}
           </div>
         </div>
 

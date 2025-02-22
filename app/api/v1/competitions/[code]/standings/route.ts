@@ -18,14 +18,6 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ code: string }> }
 ) {
-  if (!FOOTBALL_DATA_API_AUTH_TOKEN) {
-    console.error(
-      "You have not set your FOOTBALL_DATA_API_AUTH_TOKEN in .env file"
-    );
-    return new Response("Internal Server Error", {
-      status: 500,
-    });
-  }
   const { code } = await params;
   const response = await fetch(
     `${FOOTBALL_DATA_API_URL}/competitions/${code}/standings`,

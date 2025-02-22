@@ -29,9 +29,6 @@ async function getMatches(query: string) {
   // This `key` will change every 120 seconds
   const key = `${query}-${Math.floor(new Date().valueOf() / (1000 * revalidate)).toString()}`;
   return unstable_cache(async () => {
-    if (!FOOTBALL_DATA_API_AUTH_TOKEN) {
-      throw new Error("You have not set your FOOTBALL_DATA_API_AUTH_TOKEN in .env file");
-    }
     const response = await fetch(`${FOOTBALL_DATA_API_URL}/matches?${query}`, {
       headers: { "X-Auth-Token": FOOTBALL_DATA_API_AUTH_TOKEN },
     });

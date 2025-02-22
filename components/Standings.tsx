@@ -7,11 +7,6 @@ async function getData(code: string | number) {
   let competition: null | Competition = null;
   let standings: null | Standing[] = null;
 
-  if (!API_URL) {
-    console.error("You have not set your APP_URL in .env file");
-    return { competition, standings };
-  }
-
   const response = await fetch(`${API_URL}/competitions/${code}/standings`, {
     next: { revalidate: 60 * 60 },
   });

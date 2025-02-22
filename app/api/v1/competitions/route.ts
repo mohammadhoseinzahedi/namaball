@@ -14,15 +14,6 @@ type Data = {
 };
 
 export async function GET() {
-  if (!FOOTBALL_DATA_API_AUTH_TOKEN) {
-    console.error(
-      "You have not set your FOOTBALL_DATA_API_AUTH_TOKEN in .env file"
-    );
-    return new Response("Internal Server Error", {
-      status: 500,
-    });
-  }
-
   const response = await fetch(`${FOOTBALL_DATA_API_URL}/competitions`, {
     headers: { "X-Auth-Token": FOOTBALL_DATA_API_AUTH_TOKEN },
     next: { revalidate: 86400 },
