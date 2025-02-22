@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { ThemeContextProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   title: "Namaball",
-  description: "This is the Football Data Demo App built with NextJS and using football-data.org API, It shows livescore and standings for supported competitions",
+  description:
+    "This is the Football Data Demo App built with NextJS and using football-data.org API, It shows livescore and standings for supported competitions",
 };
 
 export default function RootLayout({
@@ -25,14 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-mono)]`}
-      >
-        <header>
-          <Navbar />
-        </header>
+      <body className="font-sans dark:bg-slate-900 dark:text-white bg-white text-black">
+        <ThemeContextProvider>
+          <header>
+            <Navbar />
+          </header>
 
-        <main>{children}</main>
+          <main>{children}</main>
+        </ThemeContextProvider>
       </body>
     </html>
   );

@@ -1,31 +1,34 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import clsx from "clsx";
-
+import ThemeSwitch from "@/components/ThemeSwitch";
+import { cn } from "@/lib/utils";
 
 const menuItems = [
   { title: "Home", href: "/" },
-  { title: "Competitions", href: "/competitions", className: "border-x" },
+  { title: "Competitions", href: "/competitions" },
   { title: "Matches", href: "/matches" },
 ];
 
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="bg-slate-700 p-3 md:text-xl text-white">
-      <div className="container mx-auto flex flex-wrap justify-center">
-        {menuItems.map(({ title, href, className }) => (
-          <Link
-            key={title}
-            href={href}
-            className={clsx("px-2", className, {
-              "text-yellow-500" : pathname == href,
-            })}
-          >
-            {title}
-          </Link>
-        ))}
+    <nav className="p-3 text-base sm:text-lg md:text-xl shadow-md dark:shadow-none">
+      <div className="container mx-auto flex flex-wrap justify-between items-center gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-4">
+          {menuItems.map(({ title, href }) => (
+            <Link
+              key={title}
+              href={href}
+              className={cn({
+                "text-yellow-500": pathname == href,
+              })}
+            >
+              {title}
+            </Link>
+          ))}
+        </div>
+        <ThemeSwitch />
       </div>
     </nav>
   );
