@@ -12,10 +12,6 @@ import {
 import Link from "next/link";
 
 async function getCompetitions() {
-  if (!API_URL) {
-    console.error("You have not set your APP_URL in .env file");
-    return;
-  }
   const response = await fetch(`${API_URL}/competitions`, {
     next: { revalidate: 86400 },
   });
@@ -29,7 +25,7 @@ async function getCompetitions() {
 
 const Competition = ({ competition }: { competition: Competition }) => {
   return (
-    <Card className="flex flex-col justify-between">
+    <Card className="flex flex-col justify-between dark:bg-slate-700 dark:text-white">
       <CardHeader>
         <CardTitle>{competition.name}</CardTitle>
         <CardDescription>{competition.area?.name}</CardDescription>
@@ -65,7 +61,7 @@ const Competition = ({ competition }: { competition: Competition }) => {
       </CardContent>
       <CardFooter>
         <Link
-          className="flex-1 py-2 px-4 text-center text-white border rounded-xl bg-blue-500 hover:bg-blue-800"
+          className="flex-1 py-2 px-4 text-center text-white border dark:border-blue-900 rounded-xl bg-blue-500 hover:bg-blue-950 dark:bg-blue-900"
           href={`/competitions/${competition.code}`}
         >
           View

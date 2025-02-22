@@ -13,7 +13,7 @@ const menuItems = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className="p-3 text-base sm:text-lg md:text-xl shadow-md dark:shadow-none">
+    <nav className="p-3 text-base sm:text-lg md:text-xl shadow-md dark:shadow-none border-b">
       <div className="container mx-auto flex flex-wrap justify-between items-center gap-4">
         <div className="flex flex-wrap gap-2 sm:gap-4">
           {menuItems.map(({ title, href }) => (

@@ -31,7 +31,7 @@ async function getMatches(query: string = "") {
 const Match = ({ match }: { match: Match }) => {
   return (
     <>
-      <div className="bg-lime-300">
+      <div className="bg-lime-300 dark:bg-lime-950">
         <div className="container mx-auto flex flex-wrap p-2 md:px-8 items-center">
           <Image
             className="mr-4 w-[30px] h-[30px]"
@@ -53,31 +53,39 @@ const Match = ({ match }: { match: Match }) => {
       <div className="container mx-auto flex flex-wrap p-2 md:px-8">
         <div className="flex flex-col">
           <div>
-            <Image
-              className="mb-2 w-[30px] h-[30px]"
-              width={30}
-              height={30}
-              src={match.homeTeam.crest}
-              alt={match.homeTeam.name}
-            />
+            {match.homeTeam.crest ? (
+              <Image
+                className="mb-2 w-[30px] h-[30px]"
+                width={30}
+                height={30}
+                src={match.homeTeam.crest}
+                alt={match.homeTeam.name}
+              />
+            ) : (
+              <div className="w-[30px] h-[30px] border text-center"> ? </div>
+            )}
           </div>
           <div>
-            <Image
-              className="w-[30px] h-[30px]"
-              width={30}
-              height={30}
-              src={match.awayTeam.crest}
-              alt={match.awayTeam.name}
-            />
+            {match.awayTeam.crest ? (
+              <Image
+                className="w-[30px] h-[30px]"
+                width={30}
+                height={30}
+                src={match.awayTeam.crest}
+                alt={match.awayTeam.name}
+              />
+            ) : (
+              <div className="w-[30px] h-[30px] border text-center"> ? </div>
+            )}
           </div>
         </div>
 
         <div className="flex flex-col mx-4">
           <div className="flex-1 content-center">
-            {match.homeTeam.shortName || `${match.homeTeam.name.slice(0, 20)} ...`}
+            {match.homeTeam.shortName ?? "Unknown"}
           </div>
           <div className="flex-1 content-center">
-            {match.awayTeam.shortName || match.awayTeam.name}
+            {match.awayTeam.shortName ?? "Unknown"}
           </div>
         </div>
 

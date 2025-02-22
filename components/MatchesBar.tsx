@@ -34,13 +34,13 @@ const MatchesBar = ({ date }: { date: DateSearchParam }) => {
   ];
 
   return (
-    <nav className="py-1 bg-slate-100 text-slate-500 text-sm md:text-base">
+    <nav className="py-1 text-sm md:text-base">
       <div className="container mx-auto flex flex-wrap p-1 justify-center">
         {links.map(({ label, href, isActive }) => (
           <Link
             key={label}
             href={href}
-            className={clsx("block p-1", { "text-black italic": isActive })}
+            className={clsx("block p-1", { "text-yellow-500 italic": isActive })}
           >
             {label}
           </Link>
