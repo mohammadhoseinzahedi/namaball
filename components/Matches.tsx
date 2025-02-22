@@ -74,7 +74,7 @@ const Match = ({ match }: { match: Match }) => {
 
         <div className="flex flex-col mx-4">
           <div className="flex-1 content-center">
-            {match.homeTeam.shortName || match.homeTeam.name}
+            {match.homeTeam.shortName || `${match.homeTeam.name.slice(20)} ...`}
           </div>
           <div className="flex-1 content-center">
             {match.awayTeam.shortName || match.awayTeam.name}
