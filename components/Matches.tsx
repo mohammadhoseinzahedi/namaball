@@ -62,7 +62,7 @@ const Match = ({ match }: { match: Match }) => {
                 alt={match.homeTeam.name}
               />
             ) : (
-              <div className="w-[30px] h-[30px] border text-center"> ? </div>
+              <div className="w-[30px] h-[30px] border text-center align-middle"> ? </div>
             )}
           </div>
           <div>
@@ -75,12 +75,12 @@ const Match = ({ match }: { match: Match }) => {
                 alt={match.awayTeam.name}
               />
             ) : (
-              <div className="w-[30px] h-[30px] border text-center"> ? </div>
+              <div className="w-[30px] h-[30px] border text-center align-middle"> ? </div>
             )}
           </div>
         </div>
 
-        <div className="flex flex-col mx-4">
+        <div className="flex flex-col mx-4 basis-36 overflow-y-scroll">
           <div className="flex-1 content-center">
             {match.homeTeam.shortName ?? "Unknown"}
           </div>
