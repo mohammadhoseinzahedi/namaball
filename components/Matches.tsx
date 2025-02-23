@@ -80,7 +80,7 @@ const Match = ({ match }: { match: Match }) => {
           </div>
         </div>
 
-        <div className="flex flex-col mx-4 basis-36 overflow-y-scroll">
+        <div className="flex flex-col mx-4 basis-36 overflow-x-auto">
           <div className="flex-1 content-center">
             {match.homeTeam.shortName ?? "Unknown"}
           </div>
