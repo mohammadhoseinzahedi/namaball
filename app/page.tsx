@@ -1,4 +1,11 @@
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "NamaBall",
+  description:
+    "Stay ahead of the game with real-time football livescores and standings!",
+};
 
 export default function Home() {
   return (
@@ -6,10 +13,13 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div>
           <p>
-            This is the Football Data Demo App built with NextJS and using
-            football-data.org API
+            Welcome to the Football Data Demo App, your one-stop destination for
+            real-time livescores and standings! Powered by NextJS and the
+            <a href="https://www.football-data.org/"> football-data.org </a>
+            api, this app covers supported competitions, providing you with
+            up-to-the-minute updates and rankings. Dive in and stay ahead of the
+            game!
           </p>
-          <p>It shows livescore and standings for supported competitions</p>
         </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
