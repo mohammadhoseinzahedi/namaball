@@ -31,7 +31,7 @@ async function getMatches(query: string = "") {
 const Match = ({ match }: { match: Match }) => {
   return (
     <>
-      <div className="bg-lime-300 dark:bg-lime-950">
+      <div className="bg-lime-300 dark:bg-red-800">
         <div className="container mx-auto flex flex-wrap p-2 md:px-8 items-center">
           <Image
             className="mr-4 w-[30px] h-[30px]"
